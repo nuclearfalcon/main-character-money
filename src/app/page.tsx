@@ -1,65 +1,155 @@
 import Image from "next/image";
+import Link from "next/link";
+import EpisodeCard from "@/components/EpisodeCard";
+import { episodes } from "@/data/episodes";
 
 export default function Home() {
+  const latestEpisodes = episodes.slice(0, 3);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      {/* Hero Section */}
+      <section
+        className="relative min-h-[500px] lg:min-h-[600px] flex items-center overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: "url(/images/hero-bg.jpg)" }}
+      >
+        <div className="absolute inset-0 bg-[rgba(35,15,10,0.55)]" />
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 py-20">
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
+            Your money.
+            <br />
+            <span className="italic text-terracotta">Your story.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+          <p className="mt-6 text-lg text-gray-300 max-w-xl leading-relaxed">
+            A personal finance podcast for people who want to be the main
+            character of their financial life — not a side character in someone
+            else&apos;s.
+          </p>
+          <div className="mt-8 flex items-center gap-4">
+            <Link
+              href="#"
+              className="bg-terracotta hover:bg-terracotta/90 text-white font-semibold px-6 py-3 rounded-full transition-colors"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Listen Now
+            </Link>
+            <Link
+              href="#about"
+              className="border border-white/50 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-full transition-colors"
             >
-              Learning
-            </a>{" "}
-            center.
+              Learn More
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-background">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="text-sage font-semibold text-sm tracking-widest uppercase mb-4">
+            About the Show
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight">
+            Money talk for teens and{" "}
+            <span className="italic text-terracotta">everybody</span> else
+          </h2>
+          <p className="mt-6 text-muted leading-relaxed">
+            A teenager and her dad get together to have real conversations about
+            money. Making it, saving it and growing it. Showing teens and their
+            parents how to manage money doesn&apos;t need to be complicated. We
+            make it fun, and show you exactly what steps you can take to set
+            yourself up for a strong financial future. No gatekeeping, no shame —
+            just two people figuring it out and sharing what works.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+
+        {/* Host Cards */}
+        <div className="max-w-5xl mx-auto px-6 mt-16 grid md:grid-cols-2 gap-8">
+          <div className="bg-card rounded-xl border border-border p-8 text-center">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/images/cana.jpg"
+              alt="Cana"
+              width={120}
+              height={120}
+              className="rounded-full mx-auto mb-4"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <h3 className="text-lg font-bold">Cana</h3>
+            <p className="text-muted text-sm mt-2 leading-relaxed">
+              A 15-year-old high school student who loves adventures and the
+              beach. She&apos;s a high school athlete and club volleyball player
+              ready to take on the world — and her finances.
+            </p>
+          </div>
+          <div className="bg-card rounded-xl border border-border p-8 text-center">
+            <Image
+              src="/images/rich.jpg"
+              alt="Rich"
+              width={120}
+              height={120}
+              className="rounded-full mx-auto mb-4"
+            />
+            <h3 className="text-lg font-bold">Rich</h3>
+            <p className="text-muted text-sm mt-2 leading-relaxed">
+              Cana&apos;s dad who loves sportsball, surfing, and adventures. He
+              works in tech marketing and operations — and is on a mission to
+              make sure his daughter wins with money.
+            </p>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Latest Episodes */}
+      <section className="py-20 bg-warm-cream">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <p className="text-sage font-semibold text-sm tracking-widest uppercase mb-2">
+                Latest Episodes
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold">
+                Tune in
+              </h2>
+            </div>
+            <Link
+              href="/episodes"
+              className="text-terracotta font-semibold text-sm hover:underline flex items-center gap-1"
+            >
+              View all episodes &rarr;
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {latestEpisodes.map((ep) => (
+              <EpisodeCard key={ep.number} episode={ep} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-terracotta/80 to-terracotta">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-white italic leading-tight">
+            Ready to be the main character?
+          </h2>
+          <p className="mt-4 text-white/80 text-lg">
+            Subscribe wherever you listen to podcasts and join us on the journey
+            to financial freedom.
+          </p>
+          <div className="mt-8 flex items-center justify-center gap-4">
+            <Link
+              href="#"
+              className="bg-white/20 hover:bg-white/30 text-white font-semibold px-8 py-3 rounded-full border border-white/30 transition-colors"
+            >
+              Spotify
+            </Link>
+            <Link
+              href="#"
+              className="bg-white/20 hover:bg-white/30 text-white font-semibold px-8 py-3 rounded-full border border-white/30 transition-colors"
+            >
+              Apple Podcasts
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
